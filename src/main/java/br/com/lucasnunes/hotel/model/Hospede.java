@@ -22,9 +22,6 @@ public class Hospede {
     private Integer documento;
     private Integer telefone;
 
-    @OneToMany(mappedBy = "hospede")
-    private List<CheckIn> checkIns = new ArrayList<>();
-
     public Hospede() {
     }
 
@@ -56,10 +53,6 @@ public class Hospede {
         this.telefone = telefone;
     }
 
-    public List<CheckIn> getCheckIns() {return checkIns;}
-
-    public void setCheckIns(List<CheckIn> checkIns) {this.checkIns = checkIns;}
-
     @Override
     public String toString() {
         return "Hospede{" +
@@ -67,7 +60,6 @@ public class Hospede {
                 ", nome='" + nome + '\'' +
                 ", documento=" + documento +
                 ", telefone=" + telefone +
-                ", checkIns=" + checkIns +
                 '}';
     }
 }

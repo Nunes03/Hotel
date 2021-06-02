@@ -5,7 +5,9 @@ import br.com.lucasnunes.hotel.services.HospedeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Locale;
 
 @RestController
 public class HospedeResource {
@@ -13,22 +15,22 @@ public class HospedeResource {
     @Autowired
     HospedeService hospedeService;
 
-    @GetMapping("/hospedes")
+    @GetMapping("/hospedes/all")
     public ArrayList<Hospede> buscaTodosOsHospedes(){
         return hospedeService.buscarTodosOsHospedes();
     }
 
-    @GetMapping("/hospedes/{id}")
+    @GetMapping("/hospedes/id/{id}")
     public Hospede buscaHospedePeloId(@PathVariable Integer id){
         return hospedeService.buscarHospedePeloId(id);
     }
 
     @PostMapping("/hospedes")
-    public boolean inserirHospde(@RequestBody Hospede hospede){
+    public Integer inserirHospde(@RequestBody Hospede hospede){
         if(hospedeService.inserirHospede(hospede)){
-            return true;
+            return hospede.getId();
         }
-        return false;
+        return -1;
     }
 
     @DeleteMapping("/hospedes/{id}")
@@ -45,5 +47,17 @@ public class HospedeResource {
             return true;
         }
         return false;
+    }
+
+    @GetMapping("/hospedes/off")
+    public ArrayList<Hospede> buscarHospedeQueJaRealizaramCheckIn(){
+        LocalDateTime dataAtual = LocalDateTime.now();
+        return hospedeService.buscarHospedeQueJaRealizaramCheckIn(dataAtual);
+    }
+
+    @GetMapping("/hospedes/on")
+    public ArrayList<Hospede> buscarHospedeQueNaoRealizaramCheckIn(){
+        LocalDateTime dataAtual = LocalDateTime.now();
+        return hospedeService.buscarHospedeQueNaoRealizaramCheckIn(dataAtual);
     }
 }

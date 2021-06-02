@@ -18,7 +18,7 @@ public class CheckIn {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private LocalDateTime dataEntrada;
-    private LocalDateTime datSaida;
+    private LocalDateTime dataSaida;
     private Boolean adicionalVeiculo;
 
     @ManyToOne
@@ -44,12 +44,12 @@ public class CheckIn {
         this.dataEntrada = dataEntrada;
     }
 
-    public LocalDateTime getDatSaida() {
-        return datSaida;
+    public LocalDateTime getDataSaida() {
+        return dataSaida;
     }
 
-    public void setDatSaida(LocalDateTime datSaida) {
-        this.datSaida = datSaida;
+    public void setDataSaida(LocalDateTime dataSaida) {
+        this.dataSaida = dataSaida;
     }
 
     public Boolean getAdicionalVeiculo() {
@@ -73,7 +73,7 @@ public class CheckIn {
         return "CheckIn{" +
                 "id=" + id +
                 ", dataEntrada=" + dataEntrada +
-                ", datSaida=" + datSaida +
+                ", dataSaida=" + dataSaida +
                 ", adicionalVeiculo=" + adicionalVeiculo +
                 ", hospede=" + hospede +
                 '}';

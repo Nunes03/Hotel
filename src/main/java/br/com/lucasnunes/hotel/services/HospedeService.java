@@ -5,11 +5,11 @@ import br.com.lucasnunes.hotel.repositories.HospedeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Service
 public class HospedeService {
-
     @Autowired
     HospedeRepository hospedeRepository;
 
@@ -136,5 +136,57 @@ public class HospedeService {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    /**
+     * <h1>Busca {@link Hospede}s que não
+     * se encontram mais no hotel.</h1>
+     *
+     * <p>Recebe a data atual do sistema e procura
+     * os {@link Hospede}s que tenham a data de saida
+     * menor do que a data atual. Faz isso através
+     * do {@link HospedeRepository#buscarHospedeQueJaRealizaramCheckIn(LocalDateTime)}.
+     * Retorna boolean no final da operação.</p>
+     *
+     * @param dataAtual {@link LocalDateTime} - Referente a data
+     *                                       atual do sistema
+     *
+     * @return boolean - true caso tudo tenha dado certo
+     * false caso contrário
+     *
+     * @see Hospede
+     * @see LocalDateTime
+     * @see HospedeRepository#buscarHospedeQueJaRealizaramCheckIn(LocalDateTime)
+     *
+     * @author Lucas Nunes lucasnunes.ln365@gmail.com
+     */
+    public ArrayList<Hospede> buscarHospedeQueJaRealizaramCheckIn(LocalDateTime dataAtual){
+        return (ArrayList<Hospede>) hospedeRepository.buscarHospedeQueJaRealizaramCheckIn(dataAtual);
+    }
+
+    /**
+     * <h1>Busca {@link Hospede}s que ainda
+     * se encontram no hotel.</h1>
+     *
+     * <p>Recebe a data atual do sistema e procura
+     * os {@link Hospede}s que tenham a data de saida
+     * maior do que a data atual. Faz isso através
+     * do {@link HospedeRepository#buscarHospedeQueNaoRealizaramCheckIn(LocalDateTime)}.
+     * Retorna boolean no final da operação.</p>
+     *
+     * @param dataAtual {@link LocalDateTime} - Referente a data
+     *                                       atual do sistema
+     *
+     * @return boolean - true caso tudo tenha dado certo
+     * false caso contrário
+     *
+     * @see Hospede
+     * @see LocalDateTime
+     * @see HospedeRepository#buscarHospedeQueNaoRealizaramCheckIn(LocalDateTime)
+     *
+     * @author Lucas Nunes lucasnunes.ln365@gmail.com
+     */
+    public ArrayList<Hospede> buscarHospedeQueNaoRealizaramCheckIn(LocalDateTime dataAtual){
+        return (ArrayList<Hospede>) hospedeRepository.buscarHospedeQueNaoRealizaramCheckIn(dataAtual);
     }
 }

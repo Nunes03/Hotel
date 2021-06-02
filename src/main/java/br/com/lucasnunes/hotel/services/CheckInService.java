@@ -137,4 +137,70 @@ public class CheckInService {
             return false;
         }
     }
+
+    /**
+     * <h1>Procura o {@link CheckIn} por nome do {@link br.com.lucasnunes.hotel.model.Hospede}.</h1>
+     *
+     * <p>Recebe um nome e procura o {@link CheckIn}
+     * do {@link br.com.lucasnunes.hotel.model.Hospede} com esse
+     * nome. Faz isso através do {@link CheckInRepository#findByNome(String)}.</p>
+     *
+     * @param nome String - Referente ao nome informado
+     *
+     * @return ArrayList {@link CheckIn} - Referente a todos os
+     * {@link CheckIn} encontrados com esse nome
+     *
+     * @see CheckIn
+     * @see br.com.lucasnunes.hotel.model.Hospede
+     * @see CheckInRepository#findByNome(String) 
+     * 
+     * @author Lucas Nunes lucasnunes.ln365@gmail.com
+     */
+    public ArrayList<CheckIn> buscarCheckInPorNomeHospede(String nome){
+        return (ArrayList<CheckIn>) checkInRepository.findByNome(nome);
+    }
+
+    /**
+     * <h1>Procura o {@link CheckIn} por documento do {@link br.com.lucasnunes.hotel.model.Hospede}.</h1>
+     *
+     * <p>Recebe um documento e procura o {@link CheckIn}
+     * do {@link br.com.lucasnunes.hotel.model.Hospede} com esse
+     * documento. Faz isso através do {@link CheckInRepository#findByDocumento(Integer)}.</p>
+     *
+     * @param documento Integer - Referente ao documento informado
+     *
+     * @return ArrayList {@link CheckIn} - Referente a todos os
+     * {@link CheckIn} encontrados com esse documento
+     * 
+     * @see CheckIn
+     * @see br.com.lucasnunes.hotel.model.Hospede
+     * @see CheckInRepository#findByDocumento(Integer)  
+     * 
+     * @author Lucas Nunes lucasnunes.ln365@gmail.com
+     */
+    public ArrayList<CheckIn> buscarCheckInPorDocumentoHospede(Integer documento){
+        return (ArrayList<CheckIn>) checkInRepository.findByDocumento(documento);
+    }
+
+    /**
+     * <h1>Procura o {@link CheckIn} por telefone do {@link br.com.lucasnunes.hotel.model.Hospede}.</h1>
+     *
+     * <p>Recebe um telefone e procura o {@link CheckIn}
+     * do {@link br.com.lucasnunes.hotel.model.Hospede} com esse
+     * nome. Faz isso através do {@link CheckInRepository#findByTelefone(Integer)} .</p>
+     *
+     * @param telefone Integer - Referente ao telefone informado
+     *
+     * @return ArrayList {@link CheckIn} - Referente a todos os
+     * {@link CheckIn} encontrados com esse telefone
+     *
+     * @see CheckIn
+     * @see br.com.lucasnunes.hotel.model.Hospede
+     * @see CheckInRepository#findByTelefone(Integer) 
+     *
+     * @author Lucas Nunes lucasnunes.ln365@gmail.com
+     */
+    public ArrayList<CheckIn> buscarCheckInPorTelefoneHospede(Integer telefone){
+        return (ArrayList<CheckIn>) checkInRepository.findByTelefone(telefone);
+    }
 }
